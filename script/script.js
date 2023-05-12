@@ -1,66 +1,74 @@
-var firstNumber = document.getElementById("firstNumber");
-var plusBtn = document.getElementById("plusBtn");
-var equalsBtn = document.getElementById("equalsBtn");
+var number =[];
+var inputNumber = document.getElementById("inputNumber");
 var result = document.getElementById("result");
-var currentArithmetic = document.getElementById("currentArithmetic");
-var counter = 0;
-var sumNumbers = 0;
-var numbers = [];
-var currentArray = [];
-var operation = "";
+var total = 0;
+var isFirst = true;
+var operator;
 
-function addNumbers() {
-    numbers.push(parseFloat(firstNumber.value));
-    sumNumbers += numbers[counter];
-    counter++;
-    operation = "+";
+function sum(){
+    if(isFirst){
+        total += parseFloat(inputNumber.value);
+        isFirst = false;
+    }
+    operator = "plus";
 }
 
-function subtractNumbers() {
-    numbers.push(parseFloat(firstNumber.value));
-    sumNumbers -= numbers[counter];
-    counter++;
-    operation = "-";
+function subtract(){
+    if(isFirst){
+        total -= parseFloat(inputNumber.value);
+        isFirst = false;
+    }
+    operator = "minus";
+
 }
 
-function multiplyNumbers() {
-    numbers.push(parseFloat(firstNumber.value));
-    sumNumbers *= numbers[counter];
-    counter++;
-    operation = "*";
+function multiply(){
+    if(isFirst){
+        total *= parseFloat(inputNumber.value);
+        isFirst = false;
+    }
+    operator = "multiply";
+
 }
 
-function divideNumbers() {
-    numbers.push(parseFloat(firstNumber.value));
-    sumNumbers /= numbers[counter];
-    counter++;
-    operation = "/";
+function divide(){
+    if(isFirst){
+        total *= parseFloat(inputNumber.value);
+        isFirst = false;
+    }
+    operator = "divide";
+
 }
 
 function equalBtn(){
-    if(operation === "+"){
-        numbers.push(parseFloat(firstNumber.value));
-        sumNumbers += numbers[counter];
-        result.innerHTML = sumNumbers;
+    if(operator === "plus"){
+    
+        total += parseFloat(inputNumber.value);
+        result.innerHTML = total;
+        operator = " ";
     }
-    if(operation === "-"){
-        numbers.push(parseFloat(firstNumber.value));
-        sumNumbers -= numbers[counter];
-        result.innerHTML = sumNumbers;
+
+    if(operator === "minus"){
+    
+        total -= parseFloat(inputNumber.value);
+        result.innerHTML = total;
+        operator = " ";
     }
-    if(operation === "*"){
-        numbers.push(parseFloat(firstNumber.value));
-        sumNumbers *= numbers[counter];
-        result.innerHTML = sumNumbers;
+    if(operator === "multiply"){
+    
+        total *= parseFloat(inputNumber.value);
+        result.innerHTML = total;
+        operator = " ";
     }
-    if(operation === "/"){
-        numbers.push(parseFloat(firstNumber.value));
-        sumNumbers /= numbers[counter];
-        result.innerHTML = sumNumbers;
+    if(operator === "divide"){
+    
+        total /= parseFloat(inputNumber.value);
+        result.innerHTML = total;
+        operator = " ";
     }
 }
 
 function clearBtn(){
-    firstNumber.value = 0;
     result.innerHTML = "0";
+    inputNumber.value = "0";
 }
