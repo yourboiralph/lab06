@@ -35,7 +35,7 @@ function divideNumbers() {
 function equalBtn(){
     numbers.push(parseFloat(firstNumber.value));
     sumNumbers += numbers[counter];
-    result.innerHTML = "= " + sumNumbers;
+    result.innerHTML = sumNumbers;
 }
 
 function clearBtn(){
