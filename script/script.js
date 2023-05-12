@@ -2,58 +2,65 @@ var firstNumber = document.getElementById("firstNumber");
 var plusBtn = document.getElementById("plusBtn");
 var equalsBtn = document.getElementById("equalsBtn");
 var result = document.getElementById("result");
+var currentArithmetic = document.getElementById("currentArithmetic");
 var counter = 0;
 var sumNumbers = 0;
 var numbers = [];
 var currentArray = [];
-var operation = "default";
+var operation = "";
 
 function addNumbers() {
     numbers.push(parseFloat(firstNumber.value));
+    sumNumbers += numbers[counter];
     counter++;
-    operation = "plus";
+    operation = "+";
 }
 
 function subtractNumbers() {
     numbers.push(parseFloat(firstNumber.value));
+    sumNumbers -= numbers[counter];
     counter++;
-    operation = "minus";
+    operation = "-";
 }
 
 function multiplyNumbers() {
     numbers.push(parseFloat(firstNumber.value));
+    sumNumbers *= numbers[counter];
     counter++;
-    operation = "multiply";
+    operation = "*";
 }
 
 function divideNumbers() {
     numbers.push(parseFloat(firstNumber.value));
+    sumNumbers /= numbers[counter];
     counter++;
-    operation = "divide";
+    operation = "/";
 }
 
 function equalBtn(){
-    if(operation === "plus"){
-    numbers.push(parseFloat(firstNumber.value));
-    sumNumbers = numbers[counter] + numbers[counter-1];
-    }
-    if(operation === "minus"){
+    if(operation === "+"){
         numbers.push(parseFloat(firstNumber.value));
-        sumNumbers = numbers[counter-1] - numbers[counter];
+        sumNumbers += numbers[counter];
+        result.innerHTML = sumNumbers;
     }
-    if(operation === "multiply"){
+    if(operation === "-"){
         numbers.push(parseFloat(firstNumber.value));
-        sumNumbers = numbers[counter] * numbers[counter-1];
+        sumNumbers -= numbers[counter];
+        result.innerHTML = sumNumbers;
     }
-    if(operation === "divide"){
+    if(operation === "*"){
         numbers.push(parseFloat(firstNumber.value));
-        sumNumbers = numbers[counter-1] - numbers[counter];
+        sumNumbers *= numbers[counter];
+        result.innerHTML = sumNumbers;
     }
-    result.innerHTML = sumNumbers;
+    if(operation === "/"){
+        numbers.push(parseFloat(firstNumber.value));
+        sumNumbers /= numbers[counter];
+        result.innerHTML = sumNumbers;
+    }
 }
 
 function clearBtn(){
-    numbers = [];
     firstNumber.value = 0;
     result.innerHTML = "0";
 }
