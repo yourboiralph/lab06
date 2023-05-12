@@ -6,7 +6,7 @@ var isFirst = true;
 var operator;
 
 function sum(){
-    if(isFirst){
+    if(isFirst && inputNumber != ""){
         total += parseFloat(inputNumber.value);
         isFirst = false;
     }
@@ -14,7 +14,7 @@ function sum(){
 }
 
 function subtract(){
-    if(isFirst){
+    if(isFirst && inputNumber != ""){
         total -= parseFloat(inputNumber.value);
         isFirst = false;
     }
@@ -23,7 +23,7 @@ function subtract(){
 }
 
 function multiply(){
-    if(isFirst){
+    if(isFirst && inputNumber != ""){
         total *= parseFloat(inputNumber.value);
         isFirst = false;
     }
@@ -32,7 +32,7 @@ function multiply(){
 }
 
 function divide(){
-    if(isFirst){
+    if(isFirst && inputNumber != ""){
         total *= parseFloat(inputNumber.value);
         isFirst = false;
     }
@@ -41,30 +41,32 @@ function divide(){
 }
 
 function equalBtn(){
-    if(operator === "plus"){
+    if(!isFirst && inputNumber != ""){
+        if(operator === "plus"){
     
-        total += parseFloat(inputNumber.value);
-        result.innerHTML = total;
-        operator = " ";
-    }
-
-    if(operator === "minus"){
+            total += parseFloat(inputNumber.value);
+            result.innerHTML = total;
+            operator = " ";
+        }
     
-        total -= parseFloat(inputNumber.value);
-        result.innerHTML = total;
-        operator = " ";
-    }
-    if(operator === "multiply"){
-    
-        total *= parseFloat(inputNumber.value);
-        result.innerHTML = total;
-        operator = " ";
-    }
-    if(operator === "divide"){
-    
-        total /= parseFloat(inputNumber.value);
-        result.innerHTML = total;
-        operator = " ";
+        if(operator === "minus"){
+        
+            total -= parseFloat(inputNumber.value);
+            result.innerHTML = total;
+            operator = " ";
+        }
+        if(operator === "multiply"){
+        
+            total *= parseFloat(inputNumber.value);
+            result.innerHTML = total;
+            operator = " ";
+        }
+        if(operator === "divide"){
+        
+            total /= parseFloat(inputNumber.value);
+            result.innerHTML = total;
+            operator = " ";
+        }
     }
 }
 
